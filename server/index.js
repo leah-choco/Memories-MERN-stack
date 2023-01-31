@@ -2,8 +2,12 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
+import postRoutes from "./routes/posts.js";
 
 const app = express();
+
+//Every route inside of the post routes is gonna start with posts, meaning it will look like "localhost:5000/posts"
+app.use("/posts", postRoutes);
 
 //body-parser will allow us to scale large images. This way we can give parameters.
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
